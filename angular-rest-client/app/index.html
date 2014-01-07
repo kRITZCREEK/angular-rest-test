@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  -->
+  <h3>My first use of RESTful APIs</h3>
+    <div ng-controller="Rest">
+      <div>
+       <!-- Create a binding between the searchString model and the text field -->
+       <input type="text" ng-model="searchString" placeholder="Enter your search terms" />
+      </div>
+
+    <ul>
+      <!-- Render a li element for every entry in the items array. Notice
+         the custom search filter "searchFor". It takes the value of the
+         searchString model as an argument.
+       -->
+      <li ng-repeat="i in list | searchFor:searchString">
+        <button ng-click="getRest(i)">{{i}}</button>
+      </li>
+    </ul>
+      <h3>Titel</h3>
+      <input type="text" ng-model="data.title">
+      <h3>Beschreibung</h3>
+      <input type="text" ng-model="data.description">
+      <h3>Bild</h3>
+      <input type="text" ng-model="data.image"><br>
+      <img ng-src="{{data.image}}">
+      <h3>Rating</h3>
+      <input type="text" ng-model="data.rating">
+      <button ng-click="getRest(data.title)">RestGET</button>
+      <button ng-click="putRest()">RestPUT</button>
+      <button ng-click="deleteRest()">RestDELETE</button>
+
+    </div>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="lib/angular-local-storage.js"></script>
+</body>
+</html>
